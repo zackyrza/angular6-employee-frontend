@@ -4,7 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
++ Clone this Project `git clone https://github.com/zackyrza/angular-employees-frontend.git`
++ Change to Project Directories `cd angular-employees-frontend`
++ Run `npm install` to install the dependencies
++ Run `ng serve` for a dev server. 
++ Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

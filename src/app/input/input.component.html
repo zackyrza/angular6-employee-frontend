@@ -1,0 +1,50 @@
+<div class="input-container">
+  <h1>Employee Data</h1>
+
+  <form class="example-form">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>NIK</mat-label>
+      <input disabled matInput [value]="nik">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [formControl]="formControlName"
+             placeholder="Ex. Rifqy Zacky Ariadhy"
+             (change)="onChangeEvent($event)"
+             [value]="name"
+      >
+      <mat-error *ngIf="formControlName.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Division</mat-label>
+      <mat-select [(value)]="selectedDivision">
+        <mat-option *ngFor="let division of divisionList" [value]="division.id">
+          {{division.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Position</mat-label>
+      <mat-select [value]="selectedPosition" (valueChange)="onChangePosition($event)">
+        <mat-option *ngFor="let position of positionList" [value]="position.id">
+          {{position.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="navigation-button-container">
+    <button mat-raised-button color="primary" class="button-add" routerLink="/" routerLinkActive="active">Cancel
+    </button>
+    <button mat-raised-button color="primary" class="button-add"
+            [disabled]="selectedPosition === 0 || selectedDivision === 0 || name === ''" (click)="save()">Save
+    </button>
+    <div style="width: 10%;"></div>
+  </div>
+
+</div>

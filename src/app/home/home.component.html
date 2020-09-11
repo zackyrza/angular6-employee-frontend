@@ -1,0 +1,50 @@
+<div class="home-container">
+  <table class="table table-striped table-home">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NIK</th>
+      <th scope="col">Name</th>
+      <th scope="col">Division</th>
+      <th scope="col">Position</th>
+      <th scope="col">Type</th>
+      <th scope="col">Last Position</th>
+      <th scope="col">Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of dataEmployees;">
+      <th scope="row">{{ employee.id | number }}</th>
+      <td>{{ employee.nik }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.division }}</td>
+      <td>{{ employee.position }}</td>
+      <td>{{ employee.type }}</td>
+      <td>{{ employee.lastPosition }}</td>
+      <td>{{employee.createdDate | date}}</td>
+      <td class="button-row">
+        <button mat-raised-button color="primary" class="button-edit" [routerLink]="['/input', employee.id]">Edit
+        </button>
+        <button mat-raised-button color="warn" class="button-delete" (click)="delete(employee)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2 table-pagination">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="8">8 items per page</option>
+      <option [ngValue]="12">12 items per page</option>
+      <option [ngValue]="16">16 items per page</option>
+    </select>
+  </div>
+
+  <div class="table-button-add">
+    <a class="btn btn-primary" routerLink="/input" routerLinkActive="active" role="button">Input New Employee</a>
+  </div>
+
+</div>
